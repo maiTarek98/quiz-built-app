@@ -17,7 +17,7 @@ class QuizController extends Controller
    */
   public function index()
   {
-    $quizes = Quiz::orderBy('id','DESC')->paginate(15);
+    $quizes = Quiz::where('status','show')->orderBy('id','DESC')->paginate(15);
     return view('quizes.index', compact('quizes'));
 
   }

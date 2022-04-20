@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $get_quizes= Quiz::paginate(10);
+        $get_quizes= Quiz::where('status','show')->paginate(10);
         return view('home', compact('get_quizes'));
     }
 }
