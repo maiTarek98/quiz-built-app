@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Http\Requests\QuizRequest;
 use App\Models\Question;
-
+use Auth;
 class QuizController extends Controller 
 {
 
@@ -17,7 +17,7 @@ class QuizController extends Controller
    */
   public function index()
   {
-    $quizes = Quiz::where('status','show')->orderBy('id','DESC')->paginate(15);
+    $quizes = Quiz::where('user_id', Auth::user()->id)->where('status','show')->orderBy('id','DESC')->paginate(15);
     return view('quizes.index', compact('quizes'));
 
   }
@@ -104,7 +104,14 @@ class QuizController extends Controller
    */
   public function destroy($id)
   {
-    
+    $quiz=Quiz::find($id);
+    if(!$quiz){
+      return back()->with('error', 'Error in upload Quiz!');
+
+    }
+
+    $quiz->delete();
+    return back()->with('success', 'Quiz Successfully Deleted');
   }
   
 }

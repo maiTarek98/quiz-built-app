@@ -5,8 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Adding New Quiz') }}</div>
+                <div class="card-header">{{ __('Adding New Quiz') }}
+                    <a href="{{url('quizes')}}" class="btn btn-primary">{{ __('Show All Quizes') }}</a>
+                </div>
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
 
+                @if(session()->has('error'))
+                    <div class="alert alert-error">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('quizes.store') }}">
                         @csrf

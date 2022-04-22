@@ -26,9 +26,9 @@ class QuizRequest extends FormRequest
         return [
             'title' => 'required|string',
             'no_question' => 'required|integer',
-            'score_question' => 'required|integer|max:2',
+            'score_question' => 'required|integer',
             'status' => 'required|in:show,hide',
-            'passing_score' => 'required|integer|max:2',
+            'passing_score' => 'required|integer',
             'description' => '',
             'user_id' => 'integer',
         ];

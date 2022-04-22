@@ -14,7 +14,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Adding Questions') }}</div>
+                <div class="card-header">{{ __('Adding Questions') }}
+                    <a href="{{url('quizes/'.$quiz->id.'/edit')}}" class="btn btn-warning">{{ __('Back To Quiz') }}</a>
+                </div>
 
                 <div class="card-body">
                 @if($totalQustions <= $quiz->no_question)
@@ -53,7 +55,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="option_2" class="col-md-4 col-form-label text-md-end">{{ __('mark per question') }}</label>
+                            <label for="option_2" class="col-md-4 col-form-label text-md-end">{{ __('option_2 in quiz') }}</label>
 
                             <div class="col-md-6">
                                 <input id="option_2" type="text" class="form-control @error('option_2') is-invalid @enderror" name="option_2" value="{{ old('option_2') }}" required autocomplete="current-option_2">
@@ -68,7 +70,7 @@
 
 
                         <div class="row mb-3">
-                            <label for="option_3" class="col-md-4 col-form-label text-md-end">{{ __('passing score in quiz') }}</label>
+                            <label for="option_3" class="col-md-4 col-form-label text-md-end">{{ __('option_3 in quiz') }}</label>
 
                             <div class="col-md-6">
                                 <input id="option_3" type="text" class="form-control @error('option_3') is-invalid @enderror" name="option_3" value="{{ old('option_3') }}" required autocomplete="option_3" autofocus>

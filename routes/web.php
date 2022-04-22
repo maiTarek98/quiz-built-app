@@ -15,9 +15,9 @@ use App\Http\Controllers\QuestionController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::group([ 'middleware' => 'auth'], function () {
 
@@ -25,9 +25,14 @@ Route::group([ 'middleware' => 'auth'], function () {
 
 Route::resource('quizes', QuizController::class);
 Route::resource('questions', QuestionController::class);
-Route::resource('userquiz', 'UserQuizController');
-Route::resource('useranswer', 'UserAnswerController');
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('home');
+
+Route::get('/takeQuiz/{quiz}', [App\Http\Controllers\HomeController::class, 'take_quiz'])->name('quiz_no');
+
+Route::get('/takeQuiz/{quiz}/{question}', [App\Http\Controllers\HomeController::class, 'show_quiz_questions'])->name('quiz_questions');
+Route::any('/store_answer/{question}', [App\Http\Controllers\HomeController::class, 'store_answer'])->name('store_answer');
+
+Route::get('/result/{quiz}', [App\Http\Controllers\HomeController::class, 'show_result'])->name('show_result');

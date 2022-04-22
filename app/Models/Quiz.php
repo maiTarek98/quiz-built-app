@@ -16,4 +16,15 @@ class Quiz extends Model
         return $this->hasMany('App\Models\Question', 'quiz_id');
     }
 
+    public function user_id()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function users()
+    {
+        return $this->hasMany('App\Models\UserQuiz', 'user_id');
+    }
+
+
 }
