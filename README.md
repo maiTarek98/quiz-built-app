@@ -16,7 +16,7 @@
 ##### In next version, it will support pdf export a certificate for user result
 
 ## ScreenShot
-![quiz_app Schema Page](/public/images/quiz_app schema.png)
+![quiz_app Schema Page](/public/images/quiz_appschema.png)
 
 ![Questions Page](/public/images/questions_page.png)
 
